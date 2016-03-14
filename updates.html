@@ -1,0 +1,460 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<title>Alembic</title>
+
+</head>
+
+<body background="images/alembic_bkg.jpg" bgcolor="#000000" leftmargin=0 topmargin=0 marginheight=0 marginwidth=0 alink="#cccccc" link="#cccccc" vlink="#cccccc" text="#999999">
+<STYLE>
+    body  {font-family: Verdana, Arial, Helvetica, sans-serif; color:cccccc;}
+    b     {font-family: Verdana, Arial, Helvetica, sans-serif;}
+    td    {font-family: Verdana, Arial, Helvetica, sans-serif; color:cccccc;}
+    table {font-family: Verdana, Arial, Helvetica, sans-serif;}
+    p     {font-family: Verdana, Arial, Helvetica, sans-serif; color:cccccc; line-height: 18px;}
+    a     {font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none;}
+    h5    {font-family: Verdana, Arial, Helvetica, sans-serif; color:cccccc;}
+	td p{font-size:12px;}
+	
+	hr{color:#870F33;background-color:#870F33;height:1;width:500px;border:0;margin-bottom:15px;}
+</STYLE>
+<table width="770" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="270" valign="top">
+      <table border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="2" align="left"><a href="index.html"><img src="images/alembic_logo.jpg" width="255" height="234" alt="" border="0"></a></td>
+        </tr>
+        <tr>
+          <td valign="top"><!-- begin navigation -->
+            <table width="182" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td><img src="images/spacer.gif" width="142" height="5" alt="" border="0"></td>
+                <td><img src="images/spacer.gif" width="42" height="5" alt="" border="0"></td>
+              </tr>
+              <tr>
+                <td align="right"><a href="index.html" style="text-decoration: none;"><br><font face="Arial,Helvetica,sans-serif" size="1">HOME</font></a>                
+                </td>
+                <td><img src="images/spacer.gif" width="42" height="28" alt="" border="0"></td>
+              </tr>
+               <tr>
+			      <td align="right"><a href="updates.html" style="text-decoration: none;"><br><font face="Arial,Helvetica,sans-serif" size="1">UPDATES</font></a><br><br>
+			      <font face="Arial,Helvetica,sans-serif" size="1" color="#cccccc">
+			      </td>
+			      <td><img src="images/arrow.gif" width="42" height="28" alt="" border="0"></td>
+              </tr>
+              <tr>
+                <td align="right"><a href="http://code.google.com/p/alembic/wiki/GettingAlembic" target="_blank" style="text-decoration: none;"><font face="Arial,Helvetica,sans-serif" size="1">GET ALEMBIC</font></a><br><br></td>
+                <td><img src="images/spacer.gif" width="42" height="28" alt="" border="0"></td>
+              </tr>
+              <tr>
+			    <td align="right"><a href="http://docs.alembic.io/" target="_blank" style="text-decoration: none;"><font face="Arial,Helvetica,sans-serif" size="1">DOCUMENTATION</font></a><br><br></td>
+			    <td><img src="images/spacer.gif" width="42" height="28" alt="" border="0"></td>
+              </tr>
+              <tr>
+			    <td align="right"><a href="http://groups.google.com/group/alembic-announce" target="_blank" style="text-decoration: none;"><font face="Arial,Helvetica,sans-serif" size="1">MAILING LIST</font></a><br><br></td>
+			    <td><img src="images/spacer.gif" width="42" height="28" alt="" border="0"></td>
+              </tr>
+
+             </table></td>
+            <td width="80" valign="top"><img src="images/spacer.gif" width="80" height="2" alt="" border="0"></td>
+        </tr>
+      </table><!-- end navigation --></td>
+    <td width="500" valign="top" bgcolor="#000000">
+      <table width="500" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="right" valign="top">  <a href="http://opensource.imageworks.com" target="_blank"><img src="images/sony.gif" width="161" height="55" alt="" border="0"></a>&nbsp;<a href="http://www.lucasfilm.com" target="_blank"><img src="images/lfl.gif" width="115" height="64" alt="" border="0"></a><br>
+          <img src="images/spacer.gif" width="10" height="65" alt="" border="0"></td>
+  </tr>
+
+
+  <tr>
+		<td valign="top"><!-- header --><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#870F33"><b>LUCASFILM AND SONY PICTURES IMAGEWORKS RELEASE ALEMBIC 1.5</b></font></td>
+		</tr>
+		<tr>
+		<td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
+		</tr>
+		<tr>
+		<td valign="top">
+		<!-- begin content -->
+        <br/>
+
+		<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+       <p>We are pleased to announce the official release of a new data back end for Alembic, codenamed Ogawa with improved write, read, and especially multi-threaded read performance.</p>
+<p>Here are some improvements we are seeing with this version:</p>
+
+<p>1) File sizes are on average 5-15% smaller. Scenes with many small objects should see even greater reductions.</p>
+
+<p>2) Single-threaded reads average around 4x faster</p>
+
+<p>3) Multi-threaded reads can improve by 25x (relative to the same operations in the existing HDF5 back-end) on 8 core systems.</p>
+
+<p>We are maintaining backwards compatibility, and you will be able to continue to read and write Alembic files backed by HDF5.</p>
+
+<p>Other library features added:</p>
+
+<p>Support for explicit hierarchical deduplication. (OObject::addChildInstance)</p>
+
+<p>Hierarchical hash keys added to objects, making it easier to compare sub-graphs of various archives. (IObject::getPropertiesHash, IObject::getChildrenHash)</p>
+
+<p>Add AbcCoreFactory::IFactory class which is a convenience class for determining whether an archive is backed by HDF5 or Ogawa and returning a properly instantiated IArchive.  All of the readers in the repository have been updated to use this.</p>
+
+<p><a href="http://docs.alembic.io/python">Python bindings</a> have been extended to support the new features above.</p>
+
+<p>New utility:</p>
+
+<p>abcls this utility is meant to behave like ls or h5ls and offers an inexpensive way to explore your object and property hierarchies.</p>
+
+<p>Bug fixes:</p>
+
+<p>AICamera:
+Getting the film back xform channels needs to be done by index.  Animated film back data wasn't being reflected in isConstant.  Offset data should be applied after the filmback matrix.</p>
+
+<p>AbcExport: preScale, and postScale film back xform should be 1.0/scale.</p>
+</font>
+		<br/><br/>
+		</td>
+		</tr>
+
+        <tr>
+        	<td><p><b><a href="http://www.youtube.com/watch?v=I__MeR8jsFk&feature=youtu.be" target="_blank" style="text-decoration: underline">Click here</a> to see the video from our press event at SIGGRAPH 2011.</b></p><br/></td>
+        </tr>
+
+        <tr>
+		<td valign="top" style="font:15px bold Verdana, Geneva, sans-serif;color:#870F33;"><!-- header --><b>AFTER A YEAR OF INDUSTRY ADOPTION, LUCASFILM AND SONY PICTURES IMAGEWORKS RELEASE ALEMBIC 1.1</b></td>
+		</tr>
+		<tr>
+		<td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
+		</tr>
+		<tr>
+		<td valign="top">
+		<!-- begin content -->
+<br/>
+<p><i>ALEMBIC is an open source exchange format that is becoming the industry standard for exchanging animated computer graphics between content creation software packages.</i> </p>
+
+
+
+<p>LOS ANGELES, CA – August 5, 2012 – <i>Alembic 1.1</i>, the open source project jointly developed by Sony Pictures Imageworks (SPI) and Lucasfilm Ltd. released its newest improvements and updates at this year's ACM SIGGRAPH Conference. </p>
+
+
+<p>Joint development of <i>Alembic</i> was first announced at SIGGRAPH 2010 and <i>Alembic 1.0</i> was released to the public at the 2011 ACM SIGGRAPH Conference in Vancouver. The software focuses on efficiently storing and sharing animation and visual effects scenes across multiple software applications. Since the software's debut last year both companies have integrated the technology into their production pipelines. ILM notably using the software for their work on the 2012 blockbuster <i>The Avengers</i> and Sony Pictures Imageworks on the 2012 worldwide hits <i>Men in Black 3</i> and <i>The Amazing Spider-Man</i> in addition to the upcoming animated feature <i>Hotel Transylvania</i>, scheduled for release September 28, 2012.</p>
+
+
+<p><i>Alembic 1.1</i>'s updates include Python API bindings, support for Lights, Materials, and Collections, as well as core performance improvements and bug fixes. Feature updates to the Maya plug-in will also be included. The code base for Alembic is available for download on the project's Google Code site and more information can be found online at: <a href="http://www.alembic.io ">http://www.alembic.io</a>  </p>
+
+
+
+<p>"We've been very grateful to see <i>Alembic</i> broadly adopted across the VFX and Animation industries application providers and studios around the world. This new release continues to add requested features while maintaining the speed and compatibility the industry has come to expect," says Rob Bredow, Chief Technology Officer, Sony Pictures Imageworks. </p>
+
+
+<p>Since <i>Alembic's 1.0</i> release, solution providers such as Autodesk, The Foundry, Solid Angle, Side Effects and Luxology have added <i>Alembic</i> support in their product lines. Software plugin provider, Exocortex, has also introduced a suite of <i>Alembic</i> based plugins for all of Autodesk's major content creation tools. </p>
+
+
+<p>Dave Story, CTO, Lucasfilm says,"Lucasfilm has continued to build its visual effects and animation pipelines around Alembic and it has helped us to greatly increase our interoperability. Support of Alembic by our third-party software providers is critical to Alembic's success. We're gratified to see the pace of adoption in the last year and will continue to invest ourselves as we forge relationships with third party solution providers."</p>
+
+
+<p>Also of note, Sony Pictures Imageworks and Lucasfilm have begun collaborating more closely with Autodesk on continued <i>Alembic</i> support within Autodesk's products, initially focused on Autodesk Maya software. Maya 2013 took steps to integrate Alembic at a base level with the addition of Alembic-based GPU file caching. </p>
+
+
+<p>Marc Petit, Sr. Vice President of Media and Entertainment at Autodesk says, "Autodesk is committed to Alembic, as you can already see from the integration into Maya 2013. We're taking steps so that our developers can more directly collaborate with the Alembic team on future integration and also continue to contribute to the open source project. Alembic is gathering momentum and we think it is solving a real problem for our customers."</p>
+
+
+<p>Here's what some of the other leading solution providers are also saying about Alembic:</p>
+
+
+<p>"Over the last year Alembic support has broadened across The Foundry's own product lines as well as spreading in a wave across the industry. Getting data exchange right is hugely important, and rapid Alembic adoption has become a breath of fresh air for software vendors and their customers."<br/>
+- Simon Robinson, Chief Scientist, <i>The Foundry</i></p>
+
+
+<p>"It is not an overstatement to say that there is an Alembic revolution happening in the VFX and game industries.  Exocortex and our clients, though the "Exocortex Crate" suite of Alembic tools for 3DS Max, Softimage, Maya and Arnold, are proud to be on the front lines of this transformation.  This transformation would not be possible if it weren't for the leadership of Lucasfilm and Sony, the strong design of the core Alembic library and the first class support from Alembic's developers."<br/>
+- Ben Houston, CTO, <i>Exocortex</i></p>
+
+
+<p>"We are pleased to bring the Alembic-Arnold integration up-to-date with Arnold 4.0.  Alembic's fast, compact format and data de-duplication are a natural fit for Arnold procedurals and instancing.  We are excited to see increasing industry adoption of Alembic in conjunction with Arnold.  Solid Angle stands firmly behind Alembic and will continue to contribute to its development."<br/>
+- Marcos Fajardo, CEO/Software Architect, <i>Solid Angle</i> </p>
+
+
+
+
+<p>The Alembic team is hosting a SIGGRAPH Birds of a Feather talk, <i>Practical Application of Alembic</i>, Tuesday August 7th at 3PM at the Los Angeles Convention Center, Room 410.  There, Lucasfilm and Sony Pictures Imageworks will review their own integration experience and discuss general Q&A. </p>
+
+<br/><br/>
+		</td>
+		</tr>
+
+        <tr>
+		<td valign="top"><!-- header --><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#870F33"><b>LUCASFILM AND SONY PICTURES IMAGEWORKS RELEASE ALEMBIC 1.0</b></font></td>
+		</tr>
+		<tr>
+		<td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
+		</tr>
+		<tr>
+		<td valign="top">
+		<!-- begin content -->
+<br/>
+		<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+		<p>
+		<i>Open source exchange format provides standard for exchanging animated computer graphics scenes between content creation software packages.</i>
+		<p>
+		VANCOUVER, B.C. - August 9, 2011 - <i>Alembic 1.0</i>, the open source project jointly developed by Sony Pictures Imageworks and Lucasfilm Ltd. was released to the public today, it was announced at ACM SIGGRAPH conference in Vancouver, British Columbia.  
+		<p>
+		<i>Alembic</i> is the computer graphics interchange format developed by the two entertainment giants last year and focused on efficiently storing and sharing animation and visual effects scenes across multiple software applications. It was designed to handle massive animation data sets often required in high-end visual effects and animation, which are routinely developed and produced by companies such as Lucasfilm's Industrial Light & Magic and Lucasfilm Animation Ltd. and Sony Pictures Imageworks. The studios each saw the need for a tool like Alembic, something that would fit within existing pipelines and allow for customization at the facility level without impeding the ability to share work. 
+		<p>
+		In addition to the features announced at last year's SIGGRAPH, <i>Alembic 1.0</i> includes automatic data de-duplication. The software automatically recognizes repeated shapes in complicated geometry and only writes a single instance to disk. This makes <i>Alembic 1.0</i> use dramatically less disk space than promised without requiring any extra steps on the part of the user and can improve both write and read performance as well. In the case of hero deforming humanoid characters, including hair, shot caches have been reduced by more than 70%.  For complex, deeply hierarchical and mostly rigid assets like the Transformers characters, tests have shown cache reduction in the order of 98%. 
+		<p>
+		The code base for Alembic is available for download on the project's Google Code site and more information can be found online at: <a href="http://www.alembic.io" target="_blank" style="text-decoration: underline">http://www.alembic.io</a>
+		<p>
+		Joint development of <i>Alembic</i> was first announced at last year's Siggraph by Lucasfilm's visual effects company Industrial Light & Magic and Sony Pictures Imageworks. The companies joined forces when it became apparent that they were independently developing software designed to solve, a problem universally faced by the visual effects and animation production community: how to easily share complex animated scenes across a variety of disciplines and facilities regardless of what software was being used. 
+		<p>
+		<i>Alembic</i> includes tools that allow collaboration while working with a generic, extensible, data representation scheme. In essence, it distills complex and often proprietary, animated scenes into application-independent files with baked geometric results. These baked results can be fully re-importable across the range of supporting software.
+		<p>
+		"<i>Alembic</i> addresses a fundamental issue in a world where assets are shared across many companies. <i>Alembic</i>'s production-ready ability to seamlessly translate shapes across a wide variety of applications saves time and resources," said Rob Bredow, CTO of Sony Pictures Imageworks. "By releasing <i>Alembic</i> as an Open Source project, users have the opportunity to improve the software based on their needs and experience. We're really starting to feel the positive effects of Open Source, as a community of visual effects and animation professionals come together to solve problems more effectively today than ever before."
+		<p>
+		"<i>Alembic</i> is giving us space efficiencies beyond our most optimistic expectations and at effectively the same time cost as before.  This is sure to have a significant impact for anyone who uses the format and we are excited to be able to share this with the Open Source community," said Tommy Burnette, Head of Global Pipeline at Lucasfilm Ltd.  "Previously each facility had to produce their own unique solutions to the problem of efficient caching and scene handoff, but the beauty of Open Source is that with strong collaborative efforts we can effectively provide solutions for everyone."
+		<p>
+		Both studios have made strides with open source software and recognize the importance of such initiatives, ILM with the industry standard OpenEXR format and Imageworks with OSL, Open Color I/O, Maya Reticle, Field3D, Scala Migrations and the newly release PyP. 
+		<p>
+		Here's what some of the leading solution providers have to say about <i>Alembic</i>:
+		<p>
+		"The visual effects industry continually strives to reduce production complexity and improve collaboration throughout the pipeline. Autodesk is excited to support the implementation of production-tested technology, like <i>Alembic</i>, which enables digital entertainment artists to spend less time on internal custom software development and more time on creative storytelling. And that's a win-win, not just for the industry, but for the audience.",<br>
+		Stig Gruman, Vice President, <i>Autodesk Digital Entertainment</i>
+		<p>
+		"The way that ILM and Sony Pictures Imageworks have collaborated on this initiative has been truly impressive. <i>Alembic</i> is clearly born from real production experience of the demands of scalable asset driven production, which is vital to give it the robust foundation to become a major new industry standard. At The Foundry we wholeheartedly support <i>Alembic</i>."<br>
+		Bill Collis - CEO, <i>The Foundry</i>  
+		<p>
+		"Multi-application pipelines offer maximum flexibility for modern digital content production, and the <i>Alembic</i> format offers a reliable and open path to exchange data between modo and other leading 3D applications.  Luxology is excited to demonstrate today what we have been able to achieve with the initial implementation of <i>Alembic</i> in modo."<br>
+		Brad Peebler - CEO/Co-Founder, <i>Luxology</i>  
+		<p>
+		"With <i>Alembic</i>, ILM and Sony Imageworks have created an invaluable interoperability tool that fits perfectly into Houdini's procedural philosophy. Our tests have shown how efficient <i>Alembic</i> can be and we know our customers will be thrilled."<br>
+		Kim Davidson - President and CEO, <i>Side Effects Software</i>
+		<p>
+		<i>Alembic</i> is being offered via the New BSD License and is written in C++ and Python, leveraging the boost and HDF5 C/C++ libraries heavily, as well as OpenEXR.
+		<p>
+		For more information visit: <a href="http://opensource.imageworks.com" target="_blank" style="text-decoration: underline">opensource.imageworks.com</a> or <a href="http://www.alembic.io" target="_blank" style="text-decoration: underline">www.alembic.io</a> 
+		<p><br>
+		</td>
+		</tr>
+
+        <tr>
+		<td valign="top"><!-- header --><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#870F33"><b>ALEMBIC AT SIGGRAPH 2011</b></font></td>
+		 </tr>
+		 <tr>
+			<td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
+		 </tr>
+		 <tr>
+			<td valign="top">
+			<!-- begin content -->
+		
+		<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+		<br><b>Alembic 1.0 Press Event</b>
+		<p>
+		TUESDAY, 9 AUGUST 9:30 AM - 10:30 AM
+		<br>Fairmont Pacific Rim Hotel, The Pearl Room (across from the convention center)
+		<p>
+		Join Lucasfilm and Sony Pictures Imageworks as they give a joint update on the current state of the open source initiative, Alembic, and the software's upcoming 1.0 release. Vendors such as Autodesk, The Foundry, Luxology, and Side Effects Software will be on hand to demonstrate Alembic working in their software and answer questions.
+		<p>
+		<i>Tommy Burnette - Lucasfilm Singapore</i><br><i>Rob Bredow - Sony Pictures Imageworks</i>
+		<p>
+		<i>Please note that priority seating will be provided to members of the press.</i>
+		
+		<p>
+		<br />
+		<b>Alembic Birds of a Feather</b>
+		<p>Practical integration of Alembic
+		<p>WEDNESDAY, 10 AUGUST 10:00 AM - 11:30 AM<br>
+		Fairmont Hotel Vancouver - Tweedsmuir
+		<p>
+		A dialogue with the Alembic development team focused on pipeline integration and optimization of the format. Topics include API usage, collaboration with studio partners, and standardization of the format.<p><br>
+</td>
+</tr>
+
+        <tr>
+		          <td valign="top"><!-- header --><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#870F33"><b>UPDATES</b></font></td>
+		        </tr>
+		        <tr>
+		          <td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
+		        </tr>
+		        <tr>
+		          <td valign="top">
+		        <!-- begin content -->
+
+
+
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+
+<br /><b>July 12, 2011</b> - Alembic 1.0rc1 Beta Update
+
+<p>Hello Alembic users! Welcome to the latest beta version of Alembic. As we close in on a 1.0  release, we hope the API and file format are now stable and fully forwards-compatible. We consider these to be at a first "Release  Candidate" stage. (note that this doesn't yet apply to the application- specific reference implementations). As with all pre-release software, we can't guarantee that changes won't occur between now and a full 1.0 release.
+
+<p>The main Mercurial repository has been updated (<a href="http://code.google.com/" target="_blank" style="text-decoration: underline">http://code.google.com/</a>)
+ p/alembic/source/list), and a new tarball has been uploaded (<a href="http://code.google.com/p/alembic/downloads/list" target="_blank" style="text-decoration: underline">http://code.google.com/p/alembic/downloads/list</a>).
+
+<p>This release is mostly a bugfix and cleanup release. We've improved the build support for Windows and OS X, as well as conformed the definitions of the Curves and NuPatch types more closely to the RI spec. Those changes, though, do mean that Curves and NuPatch geometry written out with previous releases will not be recognized with this release.
+
+<p>The complete code changes for this release can be examined here:
+
+<p>
+<a href="http://codereview.appspot.com/4662068" target="_blank" style="text-decoration: underline">http://codereview.appspot.com/4662068</a>
+
+
+<p>Some highlights:
+
+<ul>
+<li>The flags and arguments for the AbcExport Maya plugin have been updated based on feedback from the community, and to be more Maya-idiomatic. You can see all the arguments supported by entering "AbcExport -h" in the script editor.
+<li>The Makefile setup for the AlembicIn Houdini SOP is greatly simplified, though still not fully integrated with Alembic's CMake setup.
+<li>The PRMan procedural now supports the Points, NuPatch, Curves, and FaceSet types from AbcGeom.
+</ul>
+
+<p>
+One other important thing to note: previous releases of Alembic did not require any of the compiled Boost libraries, but going forward, Alembic requires libboost_thread.
+
+<p>
+Although this is our initial 1.0 release candidate, it should still be considered pre-release software, and should not be used for critical, deadline-driven production work.
+
+<p>
+If you have any questions about this release, please feel free to ask them on the alembic-discuss group:
+<p>
+<a href="http://groups.google.com/group/alembic-discussion" target="_blank" style="text-decoration: underline">http://groups.google.com/group/alembic-discussion</a>
+
+<p>
+Thank you for your continued support!
+<p>
+<i>The Alembic Team</i>
+<p>
+
+<table width="500" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
+</tr>
+</table>
+
+
+
+<br><b>May 18, 2011</b> - Alembic 0.9.3 Beta Update
+<p>
+We're pleased to announce the 0.9.3 Beta release of Alembic. Highlights of this version include:
+<ul>
+<li>Definitions of geometric data types for Curves, Nurbs patches, Face sets, and Cameras. This represents the complete set of data types planned for Alembic 1.0.
+<li>Many bug fixes and performance improvements.
+<li>Experimental support for building on Windows
+<li>An example Houdini SOP
+</ul>
+
+In line with the previous Beta releases, 0.9.3:
+
+<ul>
+  <li>Is not a 1.0, therefore commercial or date driven work should not depend on this version.
+  <li>We are targeting a 1.0 release mid 2011 and really looking for your feedback on this version to round out our 1.0 plan.
+  <li>We encourage you to post to the Alembic discussion list so that others can benefit from your feedback
+   or join in on the conversation: <a href="http://groups.google.com/group/alembic-discussion" style="text-decoration: underline" target="_blank">http://groups.google.com/group/alembic-discussion</a>
+</ul>
+
+Additional documentation and the update itself can be found on: <a href="http://code.google.com/p/alembic/" style="text-decoration: underline" target="_blank">http://code.google.com/p/alembic/</a>.
+<p>
+For getting Alembic, see the instructions here: <a href="http://code.google.com/p/alembic/wiki/GettingAlembic" style="text-decoration: underline" target="_blank">http://code.google.com/p/alembic/wiki/GettingAlembic</a>
+
+<p>
+Thank you for your continued support!
+<p>
+<i>The Alembic Team</i>
+
+<p>
+<table width="500" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
+</tr>
+</table>
+
+
+<br><b>February 23, 2011</b> - Alembic 0.9.2 Beta Update
+<p>
+We're pleased to announce the 0.9.2 Beta release of Alembic. Highlights of this version include:
+<ul>
+<li>Reference Maya plugins for import and export.
+<li>Limited Python bindings using Boost.Python.
+<li>Formal mechanism for specifying UV and Normals data as indexed or expanded arrays.
+<li>Many bug fixes and performance improvements.
+</ul>
+
+In line with the previous Beta releases, 0.9.2:
+
+<ul>
+<li>Is not a 1.0, therefore commercial or date driven work should not depend on this version.
+<li>We welcome feedback and encourage you to post to the <a href="http://groups.google.com/group/alembic-discussion" style="text-decoration: underline" target="_blank">Alembic discussion list</a>.
+<li>We are targeting a 1.0 release mid 2011, but that will depend on the reports we get on this version.
+</ul>
+
+Additional documentation and the update itself can be found on <a href="http://code.google.com/p/alembic/w/list" style="text-decoration: underline" target="_blank">this page</a>.
+<p>
+We continue to make great progress inside our two studios, but still need additional real-world testing outside of our doors. We ask that you please download and evaluate at your earliest convenience so there is an opportunity to contribute feedback to the 1.0 design.
+<p>
+Thank you for your continued support!
+<p>
+<i>The Alembic Team</i>
+<p>
+<table width="500" border="0" cellspacing="0" cellpadding="0">
+<tr>
+	<td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
+</tr>
+</table>
+
+<br><b>November 2, 2010</b> - Welcome to the release of Alembic .9
+<p>
+The collaborative effort between Lucasfilm and Sony has been going well and we're pleased to bring this beta release to you. There are some important things to note about this .9 release:
+<ul>
+<li>This is not a 1.0, therefore commercial or date driven work should not depend on this version
+<li>We welcome feedback and encourage you to post to the Alembic discussion list (<a href="http://groups.google.com/group/alembic-discussion" style="text-decoration: underline" target="_blank">http://groups.google.com/group/alembic-discussion</a>), or email us directly. We'd like to collect all .9 feedback during the month of November.
+<li>We are targeting a 1.0 release early 2011, but that will depend on the reports we get on this version. Therefore, no dates are committed to at this time.
+</ul>
+
+Additional documentation and the update itself can be found <a href="http://code.google.com/p/alembic/" style="text-decoration: underline" target="_blank">here</a>.
+<p>
+We are pleased with the progress we've made so far, but really look forward to some real-world testing outside of our two studios.
+<p>
+Thanks to everyone who has been contributing so far, not only at Lucasfilm and Sony, but to our partners and friends who have been encouraging us on this project. A special note of thanks goes to Chris Horvath, who has recently moved to Sydney to work at Fuel.  His daily contributions and passion will be missed.
+<p>
+<i>Richard Kerris, CTO Lucasfilm & Rob Bredow, CTO Sony Pictures Imageworks</i></p>
+
+
+
+<br />
+
+<hr noshade/>
+
+<tr>
+     <td valign="top"><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#870F33"><b>SUBSCRIBE TO ALEMBIC ANNOUNCE AT GOOGLE GROUPS</b></font></td>
+        </tr>
+
+ <tr>
+     <td valign="top"><br>
+ <form action="http://groups.google.com/group/alembic-announce" target="_blank"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">If you are interested in being notified when updates are made, you may subscribe to the alembic-announce Google group.  This is a low-traffic
+(1-4 messages/month) announcement list that the Alembic development team will use to communicate major and important news to interested users.
+<p>Email:</font><input type=text name=email><input type=submit name="sub" value="Subscribe"><br><p style="line-height:12px;"><font size="1" face="Verdana, Arial, Helvetica, sans-serif">Your email subscription is subject to the Terms of Service and Privacy Policy of <a href="http://groups.google.com/" style="text-decoration: underline" target="_blank">Google groups</a>.</font></form> </td>
+</tr>
+
+ <tr>
+     <td valign="top">
+<p align="right"><a href="#top" style="text-decoration: none;"><img src="images/top.gif" width="30" height="30" alt="back to top" border="0"></a></p>
+<BR>
+<p>
+
+          <p>&nbsp;</p>
+
+<font face="Arial,Helvetica,sans-serif" size="1" color="#993333">TM & &#169; <script>var curDate=new Date(); document.write(curDate.getFullYear())</script> Lucasfilm Entertainment Company Ltd. or Lucasfilm Ltd.  All rights reserved. &#169; 2010 Sony Pictures Imageworks Inc. All rights reserved.</FONT><br>
+          <p>&nbsp;</p>
+          <!-- end content --></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<!--CTO Tracking for Disney -->
+<script type="text/javascript" src="http://aglobal.go.com/stat/dolWebAnalytics.js"></script>
+<script type="text/javascript" src="http://aglobal.go.com/stat/plugin/urlTagging.js"></script>
+<script type="text/javascript">
+  var cto = new CTO();
+  cto.trackPage();
+</script>
+</body>
+</html>
