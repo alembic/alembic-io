@@ -46,7 +46,11 @@
 			      <td><img src="images/arrow.gif" width="42" height="28" alt="" border="0"></td>
               </tr>
               <tr>
-                <td align="right"><a href="http://code.google.com/p/alembic/wiki/GettingAlembic" target="_blank" style="text-decoration: none;"><font face="Arial,Helvetica,sans-serif" size="1">GET ALEMBIC</font></a><br><br></td>
+          <td align="right"><a href="https://github.com/alembic/alembic/releases" target="_blank" style="text-decoration: none;"><font face="Arial,Helvetica,sans-serif" size="1">RELEASES</font></a><br><br></td>
+          <td><img src="images/spacer.gif" width="42" height="28" alt="" border="0"></td>
+              </tr>
+              <tr>
+                <td align="right"><a href="http://github.com/alembic/alembic" target="_blank" style="text-decoration: none;"><font face="Arial,Helvetica,sans-serif" size="1">SOURCE</font></a><br><br></td>
                 <td><img src="images/spacer.gif" width="42" height="28" alt="" border="0"></td>
               </tr>
               <tr>
@@ -68,123 +72,6 @@
           <td align="right" valign="top">  <a href="http://opensource.imageworks.com" target="_blank"><img src="images/sony.gif" width="161" height="55" alt="" border="0"></a>&nbsp;<a href="http://www.lucasfilm.com" target="_blank"><img src="images/lfl.gif" width="115" height="64" alt="" border="0"></a><br>
           <img src="images/spacer.gif" width="10" height="65" alt="" border="0"></td>
   </tr>
-
-  <!-- begin 1.6 release -->
-
-    <tr>
-		<td valign="top"><!-- header --><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#870F33"><b>LUCASFILM AND SONY PICTURES IMAGEWORKS RELEASE ALEMBIC 1.6</b></font></td>
-	</tr>
-	<tr>
-		<td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
-    </tr>
-	<tr>
-        <td valign="top"><br>
-                <pre>
-Thanks to your generous feedback and code contributions we are happy to announce
-the 1.6.0 release of Alembic.
-
-We've overhauled our build system, gotten rid of alembic_bootstrap.py in favor
-of going native CMake. We now better support Windows and also now require at
-least version 2.8.11 of CMake.
-
-For the latest build instructions please see:
-https://github.com/alembic/alembic/blob/master/README.txt
-
-Other changes include:
-
-Moved several core utilities out of examples and into bin.
-
-Make HDF5 an optional dependency.
-
-Allow install directory prefix to be explicitly set.
-(pull request 46)
-
-Add CMake generated configure file, so that the version of the project only
-needs to be set in one place, users know if Alembic was built without HDF5
-support, and whether it is using tr1, boost, or neither. (C++11) as a
-dependency.
-
-API:
-Add ability to create a Windows dll, and add symbol visibility flags for other
-compilers. (pull request 14)
-
-Improve Ogawa write speeds on Windows by adding a larger buffer.
-(pull request 38)
-
-Make the 3 int values on OSubD optional.
-(faceVaryingInterpolateBoundary, faceVaryingPropagateCorners, and
-interpolateBoundary issue 34)
-
-Remove unnecessary scoped static initialization of some variables. (issue 27)
-
-Arnold Procedural:
-Add Ogawa support. (pull request 20)
-
-Maya:
-Support exporting MFnFloatArray. (pull request 45)
-
-Fix bug when Nurbs curves group are only animated via the transforms and speed
-up the isAnimated check. (pull request 82)
-
-Many AbcImport/AbcExport changes based on feedback and contributions from
-Autodesk, and to bring the plugins more into line with what is in the devkit.
-(pull request 51 and 62 through 79)
-</pre>
-        <br></td>
-    </tr>
- 
-  <!-- end 1.6 release -->
-
-  <!-- begin 1.5 release -->
-
-    <tr>
-		<td valign="top"><!-- header --><font face="Verdana, Arial, Helvetica, sans-serif" size="3" color="#870F33"><b>LUCASFILM AND SONY PICTURES IMAGEWORKS RELEASE ALEMBIC 1.5</b></font></td>
-   </tr>
-	<tr>
-		<td valign="top" bgcolor="#870F33"><img src="images/spacer.gif" width="10" height="1" alt="" border="0"></td>
-	</tr>
-	<tr>
-		<td valign="top">
-        <br/>
-
-       <p>We are pleased to announce the official release of a new data back end for Alembic, codenamed Ogawa with improved write, read, and especially multi-threaded read performance.</p>
-<p>Here are some improvements we are seeing with this version:</p>
-
-<p>1) File sizes are on average 5-15% smaller. Scenes with many small objects should see even greater reductions.</p>
-
-<p>2) Single-threaded reads average around 4x faster</p>
-
-<p>3) Multi-threaded reads can improve by 25x (relative to the same operations in the existing HDF5 back-end) on 8 core systems.</p>
-
-<p>We are maintaining backwards compatibility, and you will be able to continue to read and write Alembic files backed by HDF5.</p>
-
-<p>Other library features added:</p>
-
-<p>Support for explicit hierarchical deduplication. (OObject::addChildInstance)</p>
-
-<p>Hierarchical hash keys added to objects, making it easier to compare sub-graphs of various archives. (IObject::getPropertiesHash, IObject::getChildrenHash)</p>
-
-<p>Add AbcCoreFactory::IFactory class which is a convenience class for determining whether an archive is backed by HDF5 or Ogawa and returning a properly instantiated IArchive.  All of the readers in the repository have been updated to use this.</p>
-
-<p><a href="http://docs.alembic.io/python">Python bindings</a> have been extended to support the new features above.</p>
-
-<p>New utility:</p>
-
-<p>abcls this utility is meant to behave like ls or h5ls and offers an inexpensive way to explore your object and property hierarchies.</p>
-
-<p>Bug fixes:</p>
-
-<p>AICamera:
-Getting the film back xform channels needs to be done by index.  Animated film back data wasn't being reflected in isConstant.  Offset data should be applied after the filmback matrix.</p>
-
-<p>AbcExport: preScale, and postScale film back xform should be 1.0/scale.</p>
-</font>
-		<br/><br/>
-		</td>
-	</tr>
-
-  <!-- end 1.5 release -->
-
 
         <tr>
         	<td><p><b><a href="http://www.youtube.com/watch?v=I__MeR8jsFk&feature=youtu.be" target="_blank" style="text-decoration: underline">Click here</a> to see the video from our press event at SIGGRAPH 2011.</b></p><br/></td>
